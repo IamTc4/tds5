@@ -1,28 +1,17 @@
-name: Continuous Integration
+name: CI
 
 on:
-  # Triggers the workflow on push or pull request events to the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
   build:
-    # Use the latest Ubuntu runner
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
-    - name: Simulate Build and Test
-      run: |
-        echo "Starting CI workflow..."
-        echo "Simulating build and running tests..."
-        echo "CI workflow completed successfully."
-      
-    - name: Successful Workflow Check
-      run: exit 0
+    - uses: actions/checkout@v3
+    
+    - name: Run a test
+      run: echo "Hello, CI/CD!"
